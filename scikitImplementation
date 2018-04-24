@@ -4,10 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 dataset = pd.read_csv('fma_metadata/cleaned_dataset_headers.csv')
 
@@ -28,8 +25,9 @@ print(accuracy_score(y_test, y_pred))
 
 # PRINT TIME AFTER EXECUTION
 import time
+import datetime
+
 ts = time.time()
 print ts
-import datetime
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 print st
