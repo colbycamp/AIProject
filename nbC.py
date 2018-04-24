@@ -81,9 +81,9 @@ def main():
         dataset[i] = [float(x) for x in dataset[i]]
 
     trainingSet, testSet = split(dataset, 0.75)
-    print('Data set of size',len(dataset),'split into:')
-    print('Training Set:',len(trainingSet),'rows')
-    print('Test Set:',len(testSet),'rows')
+    print('Data set of size {0} split into:'), format(len(dataset))
+    print('Training Set: {0} rows'), format(len(trainingSet))
+    print('Test Set: {0} rows'), format(len(testSet))
 
     accuracy = getAccuracy(testSet, getPredictions(getMeanStDev(trainingSet), testSet))
     print('Accuracy: {0}%').format(accuracy)
