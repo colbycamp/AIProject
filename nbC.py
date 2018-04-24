@@ -18,11 +18,6 @@ def split(dataset, splitRatio):
         trainingSet.append(temp.pop(random.randrange(len(temp))))
     return [trainingSet, temp]
 
-def getMeanStDev(dataset):
-	results = [(mean(i), stdev(i)) for i in zip(*dataset)]
-	del results[-1]
-	return results
-
 def getMeanStDevByClass(dataset):
     separated = {}
     for i in range(len(dataset)):
@@ -81,11 +76,11 @@ def main():
         dataset[i] = [float(x) for x in dataset[i]]
 
     trainingSet, testSet = split(dataset, 0.75)
-    print('Data set of size {0} split into:').format(len(dataset))
-    print('Training Set: {0} rows').format(len(trainingSet))
-    print('Test Set: {0} rows').format(len(testSet))
+    print('Data set of size {0} split into:'.format(len(dataset)))
+    print('Training Set: {0} rows'.format(len(trainingSet)))
+    print('Test Set: {0} rows'.format(len(testSet)))
 
-    accuracy = getAccuracy(testSet, getPredictions(getMeanStDev(trainingSet), testSet))
-    print('Accuracy: {0}%').format(accuracy)
+    accuracy = getAccuracy(testSet, getPredictions(getMeanStDevByClass(trainingSet), testSet))
+    print('Accuracy: {0}%'.format(accuracy))
 
 main()
